@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Instagram Page</title>
+</head>
+<body>
+    <h1>INSTAGRAM</h1>
+    <hr>
+
+<div class="post-container">
+<% for (let post of posts) { %>
+    <div class="post">
+        <h2><%= post.username %></h2>
+        <img src="/<%= post.imageUrl %>" alt="Post Image" width="300">
+        <p><%= post.caption %></p>
+        <span>Likes: <%= post.likes %></span>
+        <br>
+        <button onclick="location.href='/posts/<%= post.id %>'">View Post</button>
+    </div>
+<% } %>
+</div>
+
+<button onclick="location.href='/posts/new'">Create New Post</button>
+
+</body>
+</html>

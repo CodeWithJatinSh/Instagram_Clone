@@ -1,0 +1,18 @@
+{
+  "name": "instagram_clone",
+  "version": "1.0.0",
+  "description": "Instagram clone using Restful API",
+  "license": "ISC",
+  "author": "Jatin Sohanvi",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "uuid": "^13.0.0"
+  }
+}

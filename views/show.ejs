@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= post.username %>'s Post</title>
+    <link rel="stylesheet" href="/Poststyle.css">
+</head>
+<body>
+
+    <h1><%= post.username %></h1>
+    <hr>
+    <img src="/<%= post.imageUrl %>" alt="Post Image">
+
+    <p><%= post.caption %></p>
+
+    <p>Likes: <%= post.likes %></p>
+    <hr>
+    <button onclick="location.href='/posts'">Back</button>
+
+</body>
+</html>
