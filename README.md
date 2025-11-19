@@ -78,7 +78,7 @@ Follow these steps to get the project running on your local machine.
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/your-username/instagram-clone.git](https://github.com/your-username/instagram-clone.git)
+    git clone [https://github.com/CodeWithJatinSh/instagram-clone.git](https://github.com/CodeWithJatinSh/instagram-clone.git)
     ```
 
 2.  **Navigate to the project directory**
