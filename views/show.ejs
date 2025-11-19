@@ -8,6 +8,7 @@
 <body>
 
     <h1><%= post.username %></h1>
+    <h3>POST-ID:<%= post.id %></h3>
     <hr>
     <img src="/<%= post.imageUrl %>" alt="Post Image">
 
@@ -16,6 +17,7 @@
     <p>Likes: <%= post.likes %></p>
     <hr>
     <button onclick="location.href='/posts'">Back</button>
-
+    <button onclick="location.href='/posts/<%= post.id %>/edit'">Edit</button>
+   
 </body>
 </html>

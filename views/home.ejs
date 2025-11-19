@@ -20,6 +20,9 @@
         <span>Likes: <%= post.likes %></span>
         <br>
         <button onclick="location.href='/posts/<%= post.id %>'">View Post</button>
+         <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+    </form>
     </div>
 <% } %>
 </div>

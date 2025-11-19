@@ -1,9 +1,13 @@
 h1{
     text-align: center;
     font-family: Arial, sans-serif;
-    color: rgb(39, 117, 235);
+    color: #c23584;
 }
-
+h3{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #555;
+}
 img{
     display: block;
     margin: 0 auto;
@@ -26,7 +30,7 @@ button{
     margin: 20px auto;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #2775eb;
+    background-color: #c23584;
     color: white;
     border: none;
     border-radius: 5px;
@@ -35,5 +39,5 @@ button{
 }
 
 button:hover{
-    background-color: #1a5fc4;
+    background-color: #a0266f;
 }

@@ -5,6 +5,11 @@ const { v4: uuidv4 } = require('uuid');
 // Creating an instance of an express application
 const app = express();
 
+// Importing method-override to support PUT and DELETE methods via forms
+const methodOverride = require('method-override');
+// Using method-override middleware
+app.use(methodOverride('_method'));
+
 // Port on which the server will run
 const port = 3000;
 
@@ -56,7 +61,7 @@ let posts = [
 // ------------------------------------
 app.get('/', (req, res) => {
     console.log("Server is running");
-    res.send("Hello from the other side");
+    res.render('welcome.ejs');
 });
 
 app.get('/posts', (req, res) => {
@@ -71,26 +76,69 @@ app.get('/posts/new', (req, res) => {
 // HANDLE NEW POST FORM SUBMISSION
 app.post("/posts", upload.single("image"), (req, res) => {
     const { username, caption } = req.body;
-
-    // Save only the filename (NOT full path)
     const imageUrl = "uploads/" + req.file.filename;
 
-    posts.push({uuidv4,username, caption, imageUrl, likes: 100});
+    const newPost = {
+        id: uuidv4(),
+        username,
+        caption,
+        imageUrl,
+        likes: 100
+    };
+
+    posts.push(newPost);
 
     console.log("New post added:", newPost);
 
     res.redirect("/posts");
-    console.log(posts);
 });
+
 
 app.get('/posts/:id', (req, res) => {
     const { id } = req.params;
-    const post = posts.find(p => p.id === id);
+    const post = posts.find(p => p.id == id);
     if (post) {
         res.render('show.ejs', { post });
     } else {
         res.status(404).send("Post not found");
     }
+});
+
+app.get('/posts/:id/edit', (req, res) => {
+    const { id } = req.params;
+
+    const post = posts.find(p => p.id == id);
+
+    if (post) {
+        res.render('editpost.ejs', { post });
+        console.log("Editing post:", post);
+    } else {
+        res.status(404).send("Post not found");
+    }
+});
+
+app.patch('/posts/:id/edit', upload.single("image"), (req, res) => {
+    const { id } = req.params;
+    const { username, caption } = req.body;
+    const post = posts.find(p => p.id == id);
+
+    if (post) {
+        post.username = username;
+        post.caption = caption;
+        if (req.file) {
+            post.imageUrl = "uploads/" + req.file.filename;
+        }
+        res.redirect(`/posts/${id}`);
+        console.log("Post updated:", post);
+    } else {
+        res.status(404).send("Post not found");
+    }
+});
+
+app.delete('/posts/:id',(req, res) => {
+    let {id}= req.params;
+    posts = posts.filter(p => p.id !== id);
+    res.redirect('/posts');
 });
 
 // ------------------------------------
